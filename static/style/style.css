@@ -1,0 +1,344 @@
+/*
+    ملف style.css - تصميم عصري وداكن (Modern Dark Theme)
+*/
+
+:root {
+    /* الألوان الأساسية */
+    --dark-bg: #1e1e2f;
+    /* خلفية داكنة جداً */
+    --card-bg: #27293d;
+    /* خلفية أفتح قليلاً للبطاقات */
+    --accent-color: #00bcd4;
+    /* أزرق سماوي (Techy Blue) */
+    --accent-secondary: #ff79c6;
+    /* وردي فسفوري للتأكيد */
+    --text-color: #f8f8f2;
+    /* نص فاتح */
+    --muted-color: #a0a0a0;
+    /* نص رمادي مطفأ */
+    --header-bg: #19192a;
+    --border-radius: 12px;
+}
+
+/* ------------------------------------- */
+/* التنسيقات العامة والخطوط */
+/* ------------------------------------- */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--dark-bg);
+    padding-top: 70px;
+    /* للهيدر الثابت */
+    overflow-x: hidden;
+    /* لمنع ظهور شريط التمرير الأفقي */
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--accent-secondary);
+}
+
+/* ------------------------------------- */
+/* الرأس (Header) والتنقل (Navigation) */
+/* ------------------------------------- */
+
+header {
+    background: var(--header-bg);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+header h1 {
+    font-size: 2em;
+    color: var(--accent-color);
+    letter-spacing: 1px;
+    /* Animation: حركة انزلاق خفيفة عند التحميل */
+    animation: headerSlideIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes headerSlideIn {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li a {
+    color: var(--text-color);
+    margin: 0 15px;
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+/* تأثير خط سفلي عصري يظهر عند التحويم */
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--accent-secondary);
+    transition: width 0.3s ease-out;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* ------------------------------------- */
+/* التنسيق الرئيسي والأقسام */
+/* ------------------------------------- */
+
+main {
+    padding: 30px;
+    max-width: 1300px;
+    margin: auto;
+}
+
+section {
+    padding: 60px 0;
+    margin-bottom: 40px;
+}
+
+section h2 {
+    font-size: 3em;
+    color: var(--accent-color);
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+    /* تأثير ظل نص خفيف */
+    text-shadow: 0 0 5px rgba(0, 188, 212, 0.5);
+}
+
+/* ------------------------------------- */
+/* قسم الترحيب (Welcome) */
+/* ------------------------------------- */
+
+.welcome {
+    text-align: center;
+    padding: 50px;
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    border-top: 3px solid var(--accent-secondary);
+    /* Animation: ظهور سلس لمحتوى الترحيب */
+    animation: fadeInUp 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.welcome p {
+    font-size: 1.2em;
+    color: var(--muted-color);
+    margin: 15px 0 30px;
+}
+
+.welcome img {
+    max-width: 80%;
+    height: auto;
+    border-radius: var(--border-radius);
+    box-shadow: 0 0 15px var(--accent-color);
+    /* ظل نيون خفيف */
+    transition: transform 0.5s ease;
+}
+
+.welcome img:hover {
+    transform: scale(1.03) rotateZ(-0.5deg);
+}
+
+/* ------------------------------------- */
+/* بطاقات الطلاب والمعلمين (Cards) */
+/* ------------------------------------- */
+
+#students>div,
+#teachers>div {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+}
+
+.card {
+    background-color: var(--card-bg);
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease;
+    text-align: center;
+    border-left: 3px solid transparent;
+    opacity: 0;
+    /* تمهيد لظهور العنصر باستخدام JavaScript أو Intersection Observer (للتطبيق المتقدم) */
+    /* هنا نستخدم Animation CSS لمرة واحدة فقط لغرض العرض */
+    animation: cardZoomIn 0.8s ease forwards;
+}
+
+/* تخصيص تأخير للحركة التتابعية (Staggered Animation) */
+.card:nth-child(3n + 1) {
+    animation-delay: 0.1s;
+}
+
+.card:nth-child(3n + 2) {
+    animation-delay: 0.2s;
+}
+
+.card:nth-child(3n + 3) {
+    animation-delay: 0.3s;
+}
+
+
+@keyframes cardZoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 20px var(--accent-secondary);
+    /* ظل نيون قوي */
+    border-left: 3px solid var(--accent-secondary);
+}
+
+.card h3 {
+    color: var(--accent-color);
+    margin-bottom: 10px;
+    font-size: 1.8em;
+}
+.card img {
+    max-width: 50%;
+    height: auto;
+    border-radius: var(--border-radius);
+    margin-bottom: 15px;
+    box-shadow: 0 0 10px var(--accent-color);
+}
+.text-muted {
+    color: var(--muted-color);
+    font-style: italic;
+    font-size: 0.95em;
+}
+
+.badge {
+    background-color: var(--accent-secondary);
+    color: var(--dark-bg);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75em;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 8px;
+    box-shadow: 0 0 5px var(--accent-secondary);
+    transition: background-color 0.3s ease;
+}
+
+.badge:hover {
+    background-color: var(--accent-color);
+    box-shadow: 0 0 8px var(--accent-color);
+}
+
+
+/* ------------------------------------- */
+/* قسم الجدول (Schedule) */
+/* ------------------------------------- */
+
+#schedule {
+    text-align: center;
+}
+
+#schedule img {
+    max-width: 90%;
+    height: auto;
+    border: 3px solid var(--accent-color);
+    border-radius: var(--border-radius);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+    transition: all 0.6s ease-in-out;
+}
+
+#schedule img:hover {
+    transform: perspective(1000px) rotateY(3deg) scale(1.01);
+    /* دوران ثلاثي الأبعاد خفيف */
+    box-shadow: 0 0 30px var(--accent-secondary), 0 0 50px var(--accent-color);
+}
+
+/* ------------------------------------- */
+/* الاستجابة والتكيف */
+/* ------------------------------------- */
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px 10px;
+    }
+
+    body {
+        padding-top: 150px;
+        /* زيادة المساحة بسبب تكديس الهيدر */
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    nav ul li a {
+        margin: 5px 10px;
+    }
+
+    section h2 {
+        font-size: 2em;
+    }
+
+    main {
+        padding: 15px;
+    }
+}

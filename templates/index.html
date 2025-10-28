@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Class 8D</title>
+    </head>
+
+    <body>
+        <header>
+            <h1>Class 8D</h1>
+            <nav>
+                <ul>
+                    <li><a href="#students">Students</a></li>
+                    <li><a href="#teachers">Teachers</a></li>
+                    <li><a href="#schedule">Schedule</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <div class="welcome">
+                <h2>Welcome to Class 8D</h2>
+                <p>This is the official page for Class 8D where you can find information about our students, teachers,
+                    and schedule.</p>
+
+                <img src="{{ url_for('static', filename='img/class8D.png') }}" alt="picture of class 8D" />
+            </div>
+
+
+            <section id="students">
+                <h2>Students</h2>
+                <div>
+                    {% for student in students %}
+                    <div class="card">
+                        <h3>{{ student.name }}</h3>
+                        <img src="{{student.image}}" alt="">
+                        <p class="text-muted">Age: {{ student.age }}</p>
+                        <p>{{ student.description }}</p>
+                    </div>
+                    {% else %}
+                    <p>No students found.</p>
+                    {% endfor %}
+                </div>
+            </section>
+
+            <section id="teachers">
+                <h2>Teachers</h2>
+                <div>
+                    {% for teacher in teachers %}
+                    <div class="card">
+                        <h3>{{ teacher.name }}</h3>
+                        <p><span class="badge">Subject</span> {{ teacher.subject }}</p>
+                        <p class="text-muted">{{ teacher.description }}</p>
+                    </div>
+                    {% else %}
+                    <p>No teachers found.</p>
+                    {% endfor %}
+                </div>
+            </section>
+
+            <section id="schedule">
+                <h2>Schedule</h2>
+                <img src="{{ url_for('static', filename='img/scedhule.jpg') }}" alt="Schedule Image" />
+            </section>
+        </main>
+    </body>
+
+</html>

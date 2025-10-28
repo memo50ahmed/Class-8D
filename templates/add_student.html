@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Add Student</title>
+    </head>
+
+    <body>
+        <h1>Add New Student</h1>
+
+        <form action="/add_student" method="POST">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label for="age">Age:</label><br>
+            <input type="number" id="age" name="age" required><br><br>
+
+            <label for="Img">Image URL:</label><br>
+            <input type="text" id="Img" name="Img"><br><br>
+
+            <label for="description">Description:</label><br>
+            <textarea id="description" name="description" rows="4" cols="40"></textarea><br><br>
+
+            <button type="submit">Add Student</button>
+        </form>
+
+        <br>
+        <a href="/home">← Back to Home</a>
+    </body>
+
+</html>
